@@ -28,8 +28,8 @@ The formula can be validated using Put-Call Parity:
 
 $$ C + K e^{-rt} = P + S $$
 
-$ L.H.S. = S N(d_1) - K e^{-rt} N(d_2) + K e^{-rt} $ \
-$ L.H.S. = S [1 - N(-d_1)] - K e^{-rt} [1 - N(-d_2)] + K e^{-rt} $ \
-$ L.H.S. = S - S N(-d_1) - K e^{-rt} + K e^{-rt} N(-d_2) + K e^{-rt} $ \
-$ L.H.S. = S - S N(-d_1) + K e^{-rt} N(-d_2) $ \
-$ L.H.S. = S + P = R.H.S $
+$L.H.S. = S N(d_1) - K e^{-rt} N(d_2) + K e^{-rt}$ \
+$L.H.S. = S [1 - N(-d_1)] - K e^{-rt} [1 - N(-d_2)] + K e^{-rt}$ \
+$L.H.S. = S - S N(-d_1) - K e^{-rt} + K e^{-rt} N(-d_2) + K e^{-rt}$ \
+$L.H.S. = S - S N(-d_1) + K e^{-rt} N(-d_2)$ \
+$L.H.S. = S + P = R.H.S$

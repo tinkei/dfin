@@ -1,7 +1,7 @@
 import math
 from typing import Tuple
 
-def normal_cdf(x):
+def normal_cdf(x:float) -> float:
     """
     Computes the cumulative distribution function of the standard normal distribution.
 
@@ -48,9 +48,9 @@ def call_price(S:float, K:float, r:float, t:float, sigma:float) -> float:
     N_d1 = normal_cdf(d1)
     N_d2 = normal_cdf(d2)
 
-    call_price = S * N_d1 - K * math.exp(-r*t) * N_d2
+    C = S * N_d1 - K * math.exp(-r*t) * N_d2
 
-    return call_price
+    return C
 
 
 def put_price(S:float, K:float, r:float, t:float, sigma:float) -> float:
@@ -82,9 +82,9 @@ def put_price(S:float, K:float, r:float, t:float, sigma:float) -> float:
     N_minus_d1 = normal_cdf(-d1)
     N_minus_d2 = normal_cdf(-d2)
 
-    put_price = K * math.exp(-r*t) * N_minus_d2 - S * N_minus_d1
+    P = K * math.exp(-r*t) * N_minus_d2 - S * N_minus_d1
 
-    return put_price
+    return P
 
 
 def call_put_price(S:float, K:float, r:float, t:float, sigma:float) -> Tuple[float,float]:
@@ -116,7 +116,16 @@ def call_put_price(S:float, K:float, r:float, t:float, sigma:float) -> Tuple[flo
     N_d1 = normal_cdf(d1)
     N_d2 = normal_cdf(d2)
 
-    call_price = S * N_d1 - K * math.exp(-r*t) * N_d2
-    put_price = call_price + K * math.exp(-r*t) - S
+    C = S * N_d1 - K * math.exp(-r*t) * N_d2
+    P = C + K * math.exp(-r*t) - S
 
-    return (call_price, put_price)
+    return (C, P)
+
+
+if __name__ == "__main__":
+
+    # Sample use case
+    C = call_price(100, 110, 0.05, 1, 0.2)
+    P = put_price(100, 110, 0.05, 1, 0.2)
+    print(f"Theoretical price of a call option: ${C:.4f}")
+    print(f"Theoretical price of a put option : ${P:.4f}")
