@@ -29,7 +29,23 @@ def test_put_call_parity(option_data):
     S, K, r, t, sigma = option_data
     C = call_price(*option_data)
     P = put_price(*option_data)
-    assert math.isclose((C + K * math.exp(-r*t)).item(), (S + P).item(), rel_tol=1e-3)
+    assert math.isclose((C + K * torch.exp(-r*t)).item(), (S + P).item(), rel_tol=1e-3)
+
+
+def test_put_call_parity_randomized():
+    size = 10
+    S = torch.rand(size) * 60 + 70   # Stock price [70,130)
+    K = torch.rand(size) * 100 + 50  # Strike price[50,120)
+    r = torch.rand(size) * 0.1       # Interest rate [0, 0.1)
+    t = torch.rand(size) * 5 + 0.1   # Time to maturity [0.1, 5.1)
+    sigma = torch.rand(size) * 0.4   # Volatility [0, 0.4)
+
+    # Compute call and put prices
+    C = call_price(S, K, r, t, sigma)
+    P = put_price(S, K, r, t, sigma)
+
+    # Check that the left-hand side and right-hand side are close
+    assert torch.all(torch.isclose((C + K * torch.exp(-r*t)), (P + S)))
 
 
 def test_call_greeks(option_data):
@@ -54,6 +70,7 @@ def test_put_greeks(option_data):
     assert math.isclose(get_rho(r).item(),      -65.711, rel_tol=1e-3)
     assert math.isclose(get_theta(t).item(),     -0.672, rel_tol=1e-3)
     assert math.isclose(get_vega(sigma).item(),  39.576, rel_tol=1e-3)
+
 
 def test_delta_sum_one(option_data):
     CS, CK, Cr, Ct, Csigma = option_data

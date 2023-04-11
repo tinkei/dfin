@@ -1,5 +1,7 @@
+"""Implementation of Black-Scholes option pricing formula with PyTorch."""
+
 import torch
-from typing import Tuple
+
 
 def normal_cdf(x:torch.Tensor) -> torch.Tensor:
     """

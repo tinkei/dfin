@@ -1,5 +1,8 @@
+"""Implementation of Black-Scholes option pricing formula with plain Python."""
+
 import math
 from typing import Tuple
+
 
 def normal_cdf(x:float) -> float:
     """
