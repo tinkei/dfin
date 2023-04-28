@@ -1,0 +1,40 @@
+[build-system]
+requires = [
+    "setuptools>=61",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dfin"
+version = "0.0.1"
+authors = [
+  { name="Tin Kei Cheng" },
+]
+description = "A random assortment of Quantitative Finance algorithms that are implemented to be differentiable."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+dfin = "dfin.main:main_cli"
+
+[project.urls]
+"Homepage" = "https://github.com/tinkei/dfin/wiki"
+"Repository" = "https://github.com/tinkei/dfin"
+"Bug Tracker" = "https://github.com/tinkei/dfin/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = [
+    "*.csv",
+    "*.xls",
+    "*.xlsx",
+    "*.ipynb",
+]
