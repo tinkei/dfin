@@ -1,7 +1,7 @@
 import pytest
 import math
 
-from options.bs_vanilla import *
+from dfin.options.bs_vanilla import *
 
 
 @pytest.fixture

@@ -3,7 +3,7 @@
 from scipy.stats import norm
 from scipy.optimize import newton
 
-from options.bs_vanilla import call_price, put_price
+from dfin.options.bs_vanilla import call_price, put_price
 
 
 def call_implied_volatility(S:float, K:float, r:float, t:float, price:float) -> float:

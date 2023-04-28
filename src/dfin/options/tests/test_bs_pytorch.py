@@ -2,7 +2,7 @@ import pytest
 import torch
 import math
 
-from options.bs_pytorch import *
+from dfin.options.bs_pytorch import *
 
 
 @pytest.fixture

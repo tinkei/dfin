@@ -10,6 +10,7 @@
 dFin (ˈdi-fīn) is a random assortment of Quantitative Finance algorithms that are implemented to be differentiable.
 For starters, risk metrics such as Option Greeks are trivially obtainable through autograd.
 This also opens the door to AI/ML applications, as implied volatility can be backpropped through the equations.
+Theoretical underlying price and implied volatility can then be jointly optimized using a recommender system.
 
 At the current stage this is only a collection of individual functions yet to be integrated together into a wider framework.
 
