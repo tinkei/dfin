@@ -19,6 +19,10 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dependencies = [
+    "torch",
+    "scipy",
+]
 
 [project.scripts]
 dfin = "dfin.main:main_cli"
