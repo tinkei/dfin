@@ -2,7 +2,7 @@
 import torch
 
 
-def secant(func, x0, atol:float=1e-6, max_iter:int=1000):
+def secant(func, x0, atol:float=1e-6, max_iter:int=1000, eps=1e-14):
     """Secant's method. Quadratic convergence. Finite difference variation of Newton's method.
 
     Parameters
@@ -40,7 +40,7 @@ def secant(func, x0, atol:float=1e-6, max_iter:int=1000):
 
         # Update value (implied volatility) using Secant method.
         # x2 = (x0 * f1 - x1 * f0) / (f1 - f0) # 1.5996 ms
-        x2 = x1 - f1 * (x1 - x0) / (f1 - f0) # 1.5473 ms
+        x2 = x1 - f1 * (x1 - x0) / (f1 - f0 + eps) # 1.5473 ms
         # x2 = x1 - (x1 - x0) / (1 - f0 / f1)  # 1.5971 ms
         x0, x1, f0 = x1, x2, f1
 
@@ -54,4 +54,6 @@ def secant(func, x0, atol:float=1e-6, max_iter:int=1000):
             pass
 
     # print(f'`secant` final x1={x1.item()}')
+    if torch.any(torch.isnan(x1)):
+        return x0
     return x1
