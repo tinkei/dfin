@@ -10,6 +10,8 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+    outputs:
+      output1: ${{ steps.versionid.outputs.version }}
 
     steps:
       - uses: actions/checkout@v3
@@ -41,10 +43,15 @@ jobs:
       - name: Build package
         run: |
           python -m build
+      - name: Get version # Very ugly hack.
+        id: versionid
+        run: |
+          echo "version=`python -m setuptools_scm`" >> "$GITHUB_OUTPUT"
+          echo "`python -m setuptools_scm`"
       - name: Upload built package
         uses: actions/upload-artifact@v3
         with:
-          name: dfin-build
+          name: dfin-${{ steps.versionid.outputs.version }}-build
           path: |
             dist
       - name: Test with pytest
