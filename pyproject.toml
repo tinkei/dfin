@@ -16,12 +16,22 @@ readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Intended Audience :: Financial and Insurance Industry",
 ]
 dependencies = [
     "torch",
     "scipy",
+]
+keywords = [
+    "quant",
+    "quantitative finance",
+    "black-scholes",
+    "option pricing",
+    "implied volatility",
+    "volatility",
+    "autograd",
 ]
 
 [project.scripts]
