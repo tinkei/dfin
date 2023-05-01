@@ -8,6 +8,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dfin"
+# name = "dfinance"
+# version = "v0.0.1"
 dynamic = ["version"]
 authors = [
   { name="Tin Kei Cheng" },
