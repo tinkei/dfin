@@ -1,7 +1,7 @@
 import pytest
 import math
 
-from dfin.options.bsiv_scipy import *
+from dfin.options.iv_scipy import *
 
 
 @pytest.fixture

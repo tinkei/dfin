@@ -42,7 +42,7 @@ It's a no-brainer really:
 
 ```python
 import torch
-from dfin.options.bs_pytorch import call_price
+from dfin.options.bs_torch import call_price
 
 if __name__ == "__main__":
 
