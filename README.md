@@ -21,7 +21,10 @@ At the current stage this is only a collection of individual functions yet to be
 ## Getting Started
 
 For normal users:  
-`pip install dfin`  
+`pip install dfinance`  
+
+Development version:  
+`pip install --index-url https://test.pypi.org/simple/ --no-deps dfinance`  
 
 For developers:  
 `git clone git@github.com:tinkei/dfin.git`  

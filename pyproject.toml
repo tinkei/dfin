@@ -1,13 +1,14 @@
 [build-system]
 requires = [
     "setuptools>=61",
+    "setuptools_scm[toml]>=7",
     "wheel"
 ]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "dfin"
-version = "0.0.1"
+dynamic = ["version"]
 authors = [
   { name="Tin Kei Cheng" },
 ]
@@ -52,3 +53,8 @@ where = ["src"]
     "*.xlsx",
     "*.ipynb",
 ]
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"
+write_to = "src/dfin/_version.py"
