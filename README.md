@@ -75,7 +75,45 @@ I know gradient descent is nowhere near the most efficient way to compute implie
 Plus autograd gives us the Hessian semi-automatically so one can easily make higher-order optimization schemes work as well.
 
 ```python
+import torch
+from dfin.optimize import gradient_descent, lbfgs, secant, newton, halley
+from dfin.options.iv_torch import call_implied_volatility
+
+if __name__ == "__main__":
+
+    S = torch.tensor([100.], requires_grad=False)
+    K = torch.tensor([110.], requires_grad=False)
+    r = torch.tensor([0.05], requires_grad=False)
+    t = torch.tensor([1.], requires_grad=False)
+    price = torch.tensor([6.040088129724], requires_grad=False)
+    sigma0 = torch.tensor(0.5, requires_grad=True)
+
+    sigma = call_implied_volatility(S, K, r, t, price, sigma0, optim=gradient_descent)
+    print(f'Gradient descent (linear-ish convergence) : {sigma.item():+.6f}') # == 0.2
+    sigma = call_implied_volatility(S, K, r, t, price, sigma0, optim=lbfgs)
+    print(f'LBFGS (superlinear-ish convergence)       : {sigma.item():+.6f}') # == 0.2
+    sigma = call_implied_volatility(S, K, r, t, price, sigma0, optim=secant)
+    print(f"Secant method (quadratic convergence)     : {sigma.item():+.6f}") # == 0.2
+    sigma = call_implied_volatility(S, K, r, t, price, sigma0, optim=newton)
+    print(f"Newton's method (quadratic convergence)   : {sigma.item():+.6f}") # == 0.2
+    sigma = call_implied_volatility(S, K, r, t, price, sigma0, optim=halley)
+    print(f"Halley's method (cubic convergence)       : {sigma.item():+.6f}") # == 0.2
 ```
+
+Performance comparison on CPU:
+
+| Method | Time (ms) | Iterations |
+| :----: | --------: | :--------: |
+| Adam   | 134.52 ms |        245 |
+| LBFGS  |   3.46 ms |          6 |
+| Secant |   1.54 ms |          5 |
+| Newton |   1.41 ms |          4 |
+| Halley |   3.08 ms |          3 |
+| SciPy  | 0.0751 ms |          4 |
+
+Convenient doesn't mean fast...
+Secant method (SciPy) doesn't need to evaluate analytical gradient at all.
+Anyway, moving on...
 
 
 
