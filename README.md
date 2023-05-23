@@ -126,7 +126,11 @@ Implied volatility computed from option prices of different expiration dates and
 The result often looks like a smirk if one were to plot implied volatility against time to maturity, or a smile when plotted against strike price.
 One can use ML to introduce an appropriate amount of bias to your _"fair volatility"_, given a target maturity and strike.
 
+But first, let's visualize a volatility smile using Streamlit and Yahoo! Finance.
+In terminal, run `dfin -s`. This will start a server accessible on `http://localhost:8501`.
+
 ```python
+pass
 ```
 
 
@@ -140,6 +144,7 @@ The inconvenience of market microstructure is often simplified (read: overlooked
 For those who don't have a PhD in Financial Engineering, let AI do the heavy lifting for you.
 
 ```python
+pass
 ```
 
 
@@ -152,6 +157,7 @@ That's the reason this repository exists:
 To use a recommender system to predict both variables simultaneously.
 
 ```python
+pass
 ```
 
 
