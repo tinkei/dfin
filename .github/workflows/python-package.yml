@@ -57,7 +57,7 @@ jobs:
       - name: Test with pytest
         run: |
           pip install pytest pytest-cov
-          pytest src/dfin --doctest-modules --junitxml=test-results-${{ matrix.python-version }}.xml --cov=src/dfin --cov-report=xml --cov-report=html
+          pytest src/dfin --doctest-modules --junitxml=test-results-${{ matrix.python-version }}.xml --cov=src/dfin --cov-report=xml --cov-report=html --ignore=src/dfin/app
       - name: Upload pytest test results
         uses: actions/upload-artifact@v3
         with:

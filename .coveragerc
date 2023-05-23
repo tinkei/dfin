@@ -11,6 +11,9 @@ omit =
     # Omit weird inclusion of numba-generated code.
     */__numba_array_expr_synthetic_module_/*
 
+    # Omit Streamlit app
+    */app/*
+
 [report]
 # Regexes for lines to exclude from consideration
 exclude_lines =
