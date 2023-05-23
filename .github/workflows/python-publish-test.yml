@@ -34,8 +34,8 @@ jobs:
       - name: Alter package name on PyPI
         run: |
           head -n 12 pyproject.toml | tail -n 4
-          sed -i -e 's/name = /# name = /g' pyproject.toml
-          sed -i -e 's/# # name = /name = /g' pyproject.toml
+          sed -i -e 's/name = "dfin"/# name = "dfin"/g' pyproject.toml
+          sed -i -e 's/# name = "dfinance"/name = "dfinance"/g' pyproject.toml
           head -n 12 pyproject.toml | tail -n 4
       - name: Install build dependencies
         run: |

@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "dfin"
 # name = "dfinance"
-# version = "v0.0.1"
+# version = "v0.0.2"
 dynamic = ["version"]
 authors = [
   { name="Tin Kei Cheng" },
@@ -18,14 +18,21 @@ description = "A random assortment of Quantitative Finance algorithms that are i
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
+    "Development Status :: 1 - Planning",
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
     "License :: OSI Approved :: GNU Affero General Public License v3",
     "Intended Audience :: Financial and Insurance Industry",
+    "Typing :: Typed",
 ]
 dependencies = [
     "torch",
     "scipy",
+    "matplotlib",
+    "yfinance",
+    "requests-cache",
+    "requests-ratelimiter",
+    "streamlit>=1.10.0",
 ]
 keywords = [
     "quant",

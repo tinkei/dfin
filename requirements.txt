@@ -1,2 +1,7 @@
 torch
 scipy
+matplotlib
+yfinance
+requests-cache
+requests-ratelimiter
+streamlit>=1.10.0

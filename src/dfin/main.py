@@ -2,6 +2,7 @@
 """Entrypoint of the module."""
 
 import sys
+import pathlib
 import argparse
 import configparser
 from typing import Optional, List
@@ -42,6 +43,11 @@ def parse_arguments(args:List[str]) -> argparse.Namespace:
         '--verbose',
         action='store_true'
     )
+    parser.add_argument(
+        '-s',
+        '--start',
+        action='store_true'
+    )
     return parser.parse_args(args)
 
 
@@ -62,6 +68,17 @@ def main_cli(args:Optional[List[str]]=None):
         print('=====        dFin        =====')
         print('==============================')
         print('                              ')
+
+    if args.start:
+        import streamlit.web.bootstrap
+        app_path = pathlib.Path(__file__).parent / 'app' / '💰_dFin.py'
+        print(app_path.as_posix())
+        st_cli = ''
+        st_args = [
+        ]
+        st_flags = {
+        }
+        streamlit.web.bootstrap.run(app_path.as_posix(), st_cli, st_args, st_flags)
 
     if args.verbose:
         print('                              ')

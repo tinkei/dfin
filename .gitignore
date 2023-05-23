@@ -177,6 +177,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# yfinance
+yfinance.cache
+
 
 
 # ========================================
